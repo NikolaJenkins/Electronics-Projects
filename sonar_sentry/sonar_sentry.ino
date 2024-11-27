@@ -6,6 +6,7 @@ Servo pitch;
 #define echoPin 10;
 #define VRX_PIN A0;
 #define VRY_PIN A1;
+#define buzzerPin 8;
 
 int xValue = 0;
 int yValue = 0;
@@ -18,6 +19,8 @@ void setup() {
   pitch.attach(6);
   pinMode(trigPin, INPUT);
   pinMode(echoPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+  tone(buzzerPin, 1000, 2000);
   Serial.begin(9600);
 }
 
@@ -49,4 +52,7 @@ void loop() {
   Serial.print("Distance: ");
   Serial.println(distance);
   delay(100);
+  if (distance <= 5) {
+    tone(buzzerPin, 440);
+  }
 }
