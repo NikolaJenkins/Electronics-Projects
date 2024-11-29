@@ -7,6 +7,7 @@ Servo pitch;
 #define VRX_PIN A0;
 #define VRY_PIN A1;
 #define buzzerPin 8;
+//include capacitors
 
 int xValue = 0;
 int yValue = 0;
