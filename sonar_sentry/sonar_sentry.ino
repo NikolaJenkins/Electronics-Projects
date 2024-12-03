@@ -2,11 +2,11 @@
 
 Servo yaw;
 Servo pitch;
-#define trigPin 11;
-#define echoPin 10;
-#define VRX_PIN A0;
-#define VRY_PIN A1;
-#define buzzerPin 8;
+int trigPin = 11;
+int echoPin = 10;
+int VRX_PIN = A0;
+int VRY_PIN = A1;
+int buzzerPin = 8;
 //include capacitors
 
 int xValue = 0;
@@ -18,10 +18,10 @@ void setup() {
   // put your setup code here, to run once:
   yaw.attach(5);
   pitch.attach(6);
-  pinMode(trigPin, INPUT);
-  pinMode(echoPin, OUTPUT);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
   pinMode(buzzerPin, OUTPUT);
-  tone(buzzerPin, 1000, 2000);
+  // digitalWrite(buzzerPin, LOW);
   Serial.begin(9600);
 }
 
@@ -32,28 +32,37 @@ void loop() {
   digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
-
-  xValue = analogRead(VRX_PIN);
-  yValue = analogRead(VRY_PIN);
-  xValue = map(xValue, 0, 1023, 0, 180);
-  yValue = map(yValue, 0, 1023, 0, 180);
-
-  if (!(xValue < 80 || xValue > 100)) {
-    yaw.attach(xValue);
-    delay(15);
-  }
-
-  if (!(yValue < 80 || yValue > 100)) {
-    pitch.attach(yValue);
-    delay(15);
-  }
-
+  
   duration = pulseIn(echoPin, HIGH);
   distance = (duration*.0343)/2;
   Serial.print("Distance: ");
   Serial.println(distance);
   delay(100);
-  if (distance <= 5) {
-    tone(buzzerPin, 440);
+  if (distance <= 10) {
+    tone(buzzerPin, 440, 500);
+  }
+  // if (distance <= 10) {
+  //   digitalWrite(buzzerPin, HIGH);
+  // } else {
+  //   digitalWrite(buzzerPin, LOW);
+  // }
+
+  xValue = analogRead(VRX_PIN);
+  yValue = analogRead(VRY_PIN);
+  xValue = map(xValue, 0, 1023, 0, 180);
+  yValue = map(yValue, 0, 1023, 0, 180);
+  // Serial.print("x value : ");
+  // Serial.println(xValue);
+  // Serial.print("y value : ");
+  // Serial.println(yValue);
+
+  if (xValue < 80 || xValue > 100) {
+    yaw.write(xValue);
+    delay(15);
+  }
+
+  if (yValue < 80 || yValue > 100) {
+    pitch.write(yValue);
+    delay(15);
   }
 }
