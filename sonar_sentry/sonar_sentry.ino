@@ -41,11 +41,6 @@ void loop() {
   if (distance <= 10) {
     tone(buzzerPin, 440, 500);
   }
-  // if (distance <= 10) {
-  //   digitalWrite(buzzerPin, HIGH);
-  // } else {
-  //   digitalWrite(buzzerPin, LOW);
-  // }
 
   xValue = analogRead(VRX_PIN);
   yValue = analogRead(VRY_PIN);
