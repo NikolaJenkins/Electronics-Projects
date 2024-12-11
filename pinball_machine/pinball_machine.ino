@@ -4,7 +4,7 @@ Servo push1;
 Servo push2;
 
 int button1 = 2;
-int button2 = 3;
+int button2 = 4;
 int buttonState1 = 0;
 int buttonState2 = 0;
 
@@ -22,23 +22,23 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   buttonState1 = digitalRead(button1);
+  buttonState2 = digitalRead(button2);
   if (buttonState1 == HIGH) {
     Serial.println("push ball");
     push1.write(180);
     delay(10);
     push1.write(0);
     delay(10);
-  //   for(int pos = 0; pos <= 180; pos += 1) 
-  // {                                  
-  //   push1.write(pos);      
-  //   delay(0);                    
-  // } 
-  // for(int pos = 180; pos>=0; pos-=1)     
-  // {                                
-  //   push1.write(pos);              
-  //   delay(0);                     
-  // } 
     buttonState1 == LOW;
+  }
+
+  if (buttonState2 == HIGH) {
+    Serial.println("push ball");
+    push2.write(180);
+    delay(10);
+    push2.write(0);
+    delay(10);
+    buttonState2 == LOW;
   }
 
   // if (buttonState2 == HIGH) {
