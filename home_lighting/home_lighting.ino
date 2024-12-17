@@ -47,12 +47,14 @@ void dimLevel(int brightness) {
     FastLED.show();
     delay(50);
     leds[i] = CRGB::Black;
+    FastLED.show();
   }
   for (int i = NUM_LEDS - 1; i >= 0; i--) {
     leds[i] = CRGB(level/3, level*2/3, level);
     FastLED.show();
     delay(50);
     leds[i] = CRGB::Black;
+    FastLED.show();
   }
 }
 
