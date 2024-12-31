@@ -1,35 +1,26 @@
-int solenoidPin = 2;
+int solenoidPin = 7;
+const int buttonPin = 4;
 
-int buttonState1 = 0;
-int buttonState2 = 0;
+int buttonState = 0;
+boolean pushed = false;
 
 void setup() {
   // put your setup code here, to run once:
   pinMode(solenoidPin,OUTPUT);
+  pinMode(buttonPin, INPUT);
   Serial.begin(9600);
 }
 
 void loop() {
-  digitalWrite(solenoidPin,HIGH);
-  delay(1000);
-  digitalWrite(solenoidPin,LOW);
-  delay(1000);
-  // if (buttonState1 == HIGH) {
-  //   Serial.println("push ball1");
-  //   push1.write(0);
-  //   delay(10);
-  //   push1.write(180);
-  //   delay(10);
-  //   buttonState1 == LOW;
-  // }
-
-  // if (buttonState2 == HIGH) {
-  //   Serial.println("push ball2");
-  //   push2.write(180);
-  //   delay(10);
-  //   push2.write(0);
-  //   delay(10);
-  //   buttonState2 == LOW;
-  // }
-
+  buttonState = digitalRead(buttonPin);
+  if (buttonState == HIGH && !pushed) {
+    Serial.println("button pressed");
+    digitalWrite(solenoidPin, HIGH);
+    delay(100);
+    digitalWrite(solenoidPin, LOW);
+    delay(100);
+    pushed = true;
+  } else if (buttonState == LOW) {
+    pushed = false;
+  }
 }
