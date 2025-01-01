@@ -7,7 +7,6 @@ int echoPin = 10;
 int VRX_PIN = A0;
 int VRY_PIN = A1;
 int buzzerPin = 8;
-//include capacitors
 
 int xValue = 0;
 int yValue = 0;
@@ -15,18 +14,15 @@ int yValue = 0;
 float duration, distance;
 
 void setup() {
-  // put your setup code here, to run once:
   yaw.attach(5);
   pitch.attach(6);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   pinMode(buzzerPin, OUTPUT);
-  // digitalWrite(buzzerPin, LOW);
   Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
   digitalWrite(trigPin, HIGH);
@@ -46,10 +42,6 @@ void loop() {
   yValue = analogRead(VRY_PIN);
   xValue = map(xValue, 0, 1023, 0, 180);
   yValue = map(yValue, 0, 1023, 0, 180);
-  // Serial.print("x value : ");
-  // Serial.println(xValue);
-  // Serial.print("y value : ");
-  // Serial.println(yValue);
 
   if (xValue < 80 || xValue > 100) {
     yaw.write(xValue);
