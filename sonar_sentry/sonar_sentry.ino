@@ -10,7 +10,6 @@ int buzzerPin = 8;
 
 int xValue = 0;
 int yValue = 0;
-
 float duration, distance;
 
 void setup() {
@@ -34,6 +33,7 @@ void loop() {
   Serial.print("Distance: ");
   Serial.println(distance);
   delay(100);
+  
   if (distance <= 10) {
     tone(buzzerPin, 440, 500);
   }
