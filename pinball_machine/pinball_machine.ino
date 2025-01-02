@@ -14,7 +14,6 @@ void setup() {
 void loop() {
   buttonState = digitalRead(buttonPin);
   if (buttonState == HIGH && !pushed) {
-    Serial.println("button pressed");
     digitalWrite(solenoidPin, HIGH);
     delay(100);
     digitalWrite(solenoidPin, LOW);
