@@ -1,7 +1,3 @@
-/// @file    ColorPalette.ino
-/// @brief   Demonstrates how to use @ref ColorPalettes
-/// @example ColorPalette.ino
-
 #include <FastLED.h>
 
 #define LED_PIN     4
@@ -17,11 +13,10 @@ void setup() {
   pinMode(pirPin, INPUT);
   pinMode(lightPin, INPUT);
   Serial.begin(9600);
-  delay( 3000 ); // power-up safety delay
+  delay(3000);
   FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
   FastLED.setBrightness(50);
 }
-
 
 void loop()
 {
