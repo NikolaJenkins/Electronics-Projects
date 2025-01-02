@@ -5,7 +5,6 @@ int buttonState = 0;
 boolean pushed = false;
 
 void setup() {
-  // put your setup code here, to run once:
   pinMode(solenoidPin,OUTPUT);
   pinMode(buttonPin, INPUT);
   Serial.begin(9600);
