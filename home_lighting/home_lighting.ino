@@ -2,7 +2,7 @@
 
 #define LED_PIN     4
 #define NUM_LEDS    14
-#define LIGHT_THRESHOLD 300
+#define LIGHT_THRESHOLD 400
 CRGB leds[NUM_LEDS];
 
 const int pirPin = 5;
