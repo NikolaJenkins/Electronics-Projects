@@ -5,7 +5,7 @@
 #define LIGHT_THRESHOLD 400
 CRGB leds[NUM_LEDS];
 
-const int pirPin = 5;
+int pirPin = 5;
 const int lightPin = A0;
 int pirState = 0;
 
@@ -13,7 +13,7 @@ void setup() {
   pinMode(pirPin, INPUT);
   pinMode(lightPin, INPUT);
   Serial.begin(9600);
-  delay(3000);
+  delay(7500);
   FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, NUM_LEDS);
   FastLED.setBrightness(50);
 }
